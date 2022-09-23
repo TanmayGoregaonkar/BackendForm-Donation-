@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="formstyle.css">
+    <title>DONATE </title>
+  
+  
+    }
+    
+    @media (max-width: 630px){
+      .section-main h1{
+        font-size: 50px;
+        line-height: 60px;
+      }
+    }
+      </style>
+    
+        
+      </head>
+      
+  <body>
+      
+    <header>
+        <!-- <a href="#" class="brand">LOGO</a>  for logo-->
+       
+        
+      </header>
+      <section class="section-main">
+        <h1></h1>
+      </section>
+
+
+    
+    <div class="container py-5">
+      <div class="row">
+        <div
+          class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded"
+        >
+          <h2 class="text-center fw-bold mb-3">DONATE</h2>
+          <form name="google-sheet">
+            <div id="form_alerts"></div>
+            <div class="form-group mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter your email address"
+                required
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="phonenumber" class="form-label">Phone Number</label>
+              <input
+                type="phonenumber"
+                id="phonenumber"
+                name="phonenumber"
+                class="form-control"
+                placeholder="Enter your phonenumber"
+                required
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="address" class="form-label">Address</label>
+              <textarea
+                id="address"
+                name="address"
+                class="form-control"
+                placeholder="Enter your address"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group mb-3">
+                <label for="donation_type" class="form-label"> </label>
+  
+                <label for="donation_type">What do you want to donate?</label>
+                <select id="donation_type" name="donation_type">
+                  <option value="funds">Funds</option>
+                  <option value="item">Items</option>
+                </select>
+              </div>
+
+            <!-- <div class="form-group mb-3">
+              <label for="ngotype" class="form-label">Select NGO Type</label>
+              <select name="name_with_initials" id="ngotype">
+                <option value="1">Women Empowerment</option>
+                <option value="2">Education</option>
+                <option value="3">Underprivileged</option>
+                <option value="4">Old Age</option>
+                <option value="5">Children Welefare</option>
+              </select>
+              
+            </div> -->
+
+
+            <div class="form-group mb-3">
+                <label for="ngitype" class="form-label"> </label>
+  
+                <label for="ngotype">What do you want to donate?</label>
+                <select id="ngotype" name="ngotype">
+                    <option value="WE">Women Empowerment</option>
+                    <option value="Education">Education</option>
+                    <option value="Underprivileged">Underprivileged</option>
+                    <option value="oldage">Old Age</option>
+                    <option value="Childrenwelfare">Children Welfare</option>
+                </select>
+              </div>
+
+            <div class="form-group mb-3">
+              <label for="ngoname" class="form-label">Ngo Name </label>
+              <input
+                type="ngoname"
+                id="ngoname"
+                name="ngoname"
+                class="form-control"
+                placeholder="ngoname"
+                required
+              />
+            </div>
+            <div>
+              <button class="btn btn-primary me-2" type="submit">
+                Send message!
+              </button>
+              <button class="btn btn-danger" type="reset">
+                Reset the form!
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>  
+    
+
+  
+   
+    
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbztbdqoPaL8fX3VD6lRNQhv0QX35-n0SoPZGvItAEMP9cLh-alvaqyzwsVXvYhGmwx0Kg/exec";
+      const form = document.forms["google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) =>
+            $("#form_alerts").html(
+              "<div class='alert alert-success'>Form summited succesfully sent successfully.</div>"
+            )
+          )
+          .catch((error) =>
+            $("#form_alerts").html(
+              "<div class='alert alert-danger'>Error </div>"
+            )
+          );
+      });
+
+      window.addEventListener("scroll", function(){
+      var header = document.querySelector("header");
+      header.classList.toggle('sticky', window.scrollY > 0);
+    });
+
+    //javascript for responsive navigation sidebar menu
+    var menu = document.querySelector('.menu');
+    var menuBtn = document.querySelector('.menu-btn');
+    var closeBtn = document.querySelector('.close-btn');
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.add('active');
+    });
+
+    closeBtn.addEventListener("click", () => {
+      menu.classList.remove('active');
+    });
+      
+
+
+      
+
+    
+
+    </script>
+  </body>
+</html>
